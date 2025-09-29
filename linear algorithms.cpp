@@ -13,6 +13,7 @@ using namespace std;
 
     double a, b, c, P, g;
     double x1, x2, x3;
+    double numerator = g;
 
     cout <<"Введите a = ";
     cin >> a;
@@ -25,8 +26,6 @@ using namespace std;
 
     P = b / a;
     g = c / a;  
-
-    double numerator = g;
 
     double denominator = 2 * pow(-P / 3, 1.5);
     double ratio = numerator / denominator;
@@ -42,4 +41,5 @@ using namespace std;
          << "x3 =" << x3 << endl;
     
     return 0;
+
 }
