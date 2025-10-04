@@ -11,43 +11,28 @@
 using namespace std;
 
     int main() {
-
-    long double m0, c;
+    double m0, c;
     cout << "Введите массу покоя (m0): ";
     cin >> m0;
-
-    cout << "Введите скорость света (c): ";
+    cout << "Введите скорость света (с): ";
     cin >> c;
 
-    long double v[9];
-
-    cout << fixed << setprecision (3);
-
+    cout << fixed << setprecision(3); // Количество знаков после запятой 
     cout << "Введите 9 скоростей (в тыс. км/с): ";
 
     int i = 0;
     do {
-        cin >> v[i];
-        v[i] *= 1000;
-        i++;
-    } while (i < 9);
+        double v;
+        cin >> v;
+        v *= 1000;
 
-    long double results[9];
-
-    i = 0;
-
-    do {
-        if (v[i] >= c) {
-            cout << "Скорость: " << v[i] << " км/с, Ошибка: скорость не может быть равна или превышать скорость света" << endl;
-            results[i] = -1;
+        if (v >= c) {
+            cout << "Скорость: " << v << " км/с, Ошибка: скорость не может быть равна или превышать скорость света" << endl;
         } else {
-            long double m = m0 / sqrt(1 - pow(v[i] / c, 2));
-            cout << "Скорость: " << v[i] << " км/с, Масса: " << m << " г" << endl;
-            results[i] = m;
+            double m = m0 / sqrt(1 - pow(v / c, 2));
+            cout << "Скорость: " << v << " км/с, Масса: " << m << " г" << endl;
         }
-
-        i++;
-
+        ++i;
     } while (i < 9);
 
     return 0;
