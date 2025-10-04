@@ -1,7 +1,7 @@
 /*******************************
 * Автор:    Богданов.К.А.      *
 * Вариант:  2                  *
-* Название: Линейные алгоритмы *
+* Название: Циклы с ветвлением *
 ********************************/
 
 #include <iostream>
@@ -10,24 +10,41 @@
 using namespace std;
 
     int main() {
+
+    double D, h, C0, Cp, C;
     
-    double D = 6.3e-5;
-    double h = 2.5;
-    double C0 = 8.2;
-    double Cp = 1.7;
-    double C[] = {8, 7.5, 7, 6, 4, 2};
+    cout <<"Введите D = ";
+    cin >> D;
+    cout <<"Введите h = ";
+    cin >> h;
+    cout <<"Введите C0 = ";
+    cin >> C0;
+    cout <<"Введите Cp = ";
+    cin >> Cp;
+    cout << "Введите C = ";
+    cin >> C;
 
-    for (double C : C) {
-        long double t = sqrt(2) * (C0 - Cp) / (M_PI * (C0 - C));
-        long double i;
-
-        if (t > 2) {
-            i = sqrt(2) * D * t / (h * h) * (C0 - Cp);
-        } else {
-            i = 0.25 * D * M_PI * M_PI / (h * h) * (C0 - Cp);
+    for (int i = 0; i < 6; ++i) {
+        double C;
+        switch (i) {
+            case 0: C = 8.0; break;
+            case 1: C = 7.5; break;
+            case 2: C = 7.0; break;
+            case 3: C = 6.0; break;
+            case 4: C = 4.0; break;
+            case 5: C = 2.0; break;
         }
 
-        cout << "t = " << t << ", i = " << i << endl;
+        double t = sqrt(2) * (C0 - Cp) / (M_PI * (C0 - C));
+        double i_result;
+
+        if (t > 2) {
+            i_result = sqrt(2) * D * t / (h * h) * (C0 - Cp);
+        } else {
+            i_result = 0.25 * D * M_PI * M_PI / (h * h) * (C0 - Cp);
+        }
+
+        cout << "t = " << t << ", i = " << i_result << endl;
     }
 
     return 0;
