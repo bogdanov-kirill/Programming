@@ -12,19 +12,24 @@ using namespace std;
     int main() {
 
     double D, h, C0, Cp, C;
-    
-    cout <<"Введите D = ";
+    int i_less;
+    double i_result;
+
+    cout << "i должно быть <= ";
+    cin >> i_less;
+    cout << "Введите D = ";
     cin >> D;
-    cout <<"Введите h = ";
+    cout << "Введите h = ";
     cin >> h;
-    cout <<"Введите C0 = ";
+    cout << "Введите C0 = ";
     cin >> C0;
-    cout <<"Введите Cp = ";
+    cout << "Введите Cp = ";
     cin >> Cp;
     cout << "Введите C = ";
     cin >> C;
 
-    for (int i = 0; i < 6; ++i) {
+    for (int i = 0; i <= i_less; ++i) {
+
         double C;
         switch (i) {
             case 0: C = 8.0; break;
@@ -35,8 +40,7 @@ using namespace std;
             case 5: C = 2.0; break;
         }
 
-        double t = sqrt(2) * (C0 - Cp) / (M_PI * (C0 - C));
-        double i_result;
+        double t = sqrt(2.0) * (C0 - Cp) / (M_PI * (C0 - C));
 
         if (t > 2) {
             i_result = sqrt(2) * D * t / (h * h) * (C0 - Cp);
