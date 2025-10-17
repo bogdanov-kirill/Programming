@@ -6,50 +6,37 @@
 
 #include <iostream>
 #include <cmath>
-#include <iomanip>
 
 using namespace std;
 
     int main() {
 
-    double m0, c;
-
-    cout << "Введите массу покоя (m0): ";
-    cin >> m0;
-    cout << "Введите скорость света (с): ";
-    cin >> c;
-
-    cout << fixed << setprecision(3); // Количество знаков после запятой
-    cout << "Введите 9 скоростей (в тыс. км/с): ";
-
-    int i = 0;
-    do {
-        double v;
-        cin >> v;
+        double m0, c, v;
+        int maxSpeed = 290000;
+        int stepWhile = 2000;
+        int stepDoWhile = 5000;
+        int initialV = 50000;
         v *= 1000;
 
-        if (v >= c) {
-            cout << "Скорость: " << v << " км/с, Ошибка: скорость не может быть равна или превышать скорость света" << endl;
-        } else {
-            double m = m0 / sqrt(1 - pow(v / c, 2));
+        cout << "Enter the rest mass (m0) in grams: "; cin >> m0;
+        cout << "Enter the speed of light (c) in km/s: "; cin >> c;
+        cout << "Enter the initial velocity (v) in km/s: "; cin >> v;
 
-            while (m <= m0) {
-                cout << "Ошибка: масса не может быть меньше или равна массе покоя. Повторите ввод скорости." << endl;
-                cin >> v;
-                v *= 1000;
-                if (v >= c) {
-                    cout << "Скорость: " << v << " км/с, Ошибка: скорость не может быть равна или превышать скорость света" << endl;
-                    break;
-                }
-                m = m0 / sqrt(1 - pow(v / c, 2));
-            }
-            
-            if (m > m0) {
-                cout << "Скорость: " << v << " км/с, Масса: " << m << " г" << endl;
-                ++i;
-            }
+        cout << "Result - While:" << endl; 
+        while (v <= maxSpeed) {
+            double m = m0 / sqrt(1.0 - pow(v / c, 2.0));
+            cout << "v = " << v << ", m = " << m << endl;
+            v += stepWhile;
         }
-    } while (i < 9);
+        v = initialV;
 
-    return 0;
-}
+        cout << "Result - Do-While: " << endl;
+        do {
+            double m = m0 / sqrt(1.0 - pow(v / c, 2.0));
+            cout << "v = " << v << ", m = " << m << endl;
+            v += stepDoWhile;
+        } while (v <= maxSpeed);
+
+        return 0;
+    }
+
